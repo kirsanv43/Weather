@@ -14,16 +14,20 @@ module.exports = {
   output: {
     path: output,
     filename: 'bundle.js',
-    publicPath: './build/'
+    publicPath: '/build/'
   },
   watch: true,
-  plugins: [],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   progress: true,
   module: {
     loaders: [{
       test: /\.js.*$/,
-      loaders: ["babel-loader"],
-      exclude: /node_modules/
+      loaders: ['react-hot','babel'],
+      exclude: /node_modules/,
+      include: path.join(__dirname, 'app')
     }]
   }
 };
