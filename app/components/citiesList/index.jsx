@@ -5,7 +5,7 @@ import {bindActionCreators} from 'redux'
 import CitiesListItem from './CitiesListItem'
 import { routeActions } from 'react-router-redux'
 import '../../less/citiesList.less';
-import {  Link } from 'react-router'
+import {Link} from 'react-router'
 
 class CitiesList extends React.Component {
   constructor() {
@@ -24,18 +24,17 @@ class CitiesList extends React.Component {
     actions.addCity(this.value)
   };
 
-  onAddCity = () => {
-    console.log('push');
+  onAddCity = () => { 
     this.props.route.push('/addCity')
   };
-
+/*<li className="listItem addBtn"><Link to='addCity'><span>ADD CITY</span></Link></li>*/
   render() {
     let cities = this.props.cities.map((item, i) => {
       return <CitiesListItem key={i} name={item}/>
     });
     return <div className="weatherContainer">
       <ul>
-        <li className="listItem addBtn"><Link to="/AddCity"><span>ADD CITY</span></Link></li>
+        <li className="listItem addBtn"><a onClick={this.onAddCity}><span>ADD CITY</span></a></li>
         {cities}</ul>
       <div>
         <input onChange={this.onChange}/>
@@ -59,7 +58,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(actionsCreators, dispatch),
-    route:bindActionCreators(routeActions, dispatch)
+    route:bindActionCreators(routeActions, dispatch),
+    dispatch:dispatch
   }
 }
 

@@ -2,10 +2,10 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from '../reducers'
 import { syncHistory, routeReducer } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-import { createHistory } from 'history'
+import { createHashHistory } from 'history'
 
 export default function configureStore(initialState) {
-  const history = createHistory();
+  const history = createHashHistory();
   const middleware = syncHistory(history)
 
   const finalCreateStore = compose(
