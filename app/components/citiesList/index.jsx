@@ -5,6 +5,7 @@ import {bindActionCreators} from 'redux'
 import CitiesListItem from './CitiesListItem'
 import { routeActions } from 'react-router-redux'
 import '../../less/citiesList.less';
+import {  Link } from 'react-router'
 
 class CitiesList extends React.Component {
   constructor() {
@@ -34,7 +35,7 @@ class CitiesList extends React.Component {
     });
     return <div className="weatherContainer">
       <ul>
-        <li className="listItem addBtn"><a onClick={this.onAddCity}><span>ADD CITY</span></a></li>
+        <li className="listItem addBtn"><Link to="/AddCity"><span>ADD CITY</span></Link></li>
         {cities}</ul>
       <div>
         <input onChange={this.onChange}/>

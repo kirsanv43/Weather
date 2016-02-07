@@ -1,23 +1,39 @@
 var webpack = require('webpack');
-var webpackDevServer = require('webpack-dev-server');
+var webpackDevMiddleware = require('webpack-dev-middleware')
 var config = require("./webpack.config.js");
+var webpackHotMiddleware = require('webpack-hot-middleware')
+var express = require('express');
 
-
-config.entry.unshift("webpack-dev-server/client?http://localhost:8080", "webpack/hot/dev-server");
+config.devtools = 'eval';
+config.entry.unshift('webpack-hot-middleware/client');
 var compiler = webpack(config);
+var app = new express();
 
-var compiler = webpack(config);
-var server = new webpackDevServer(compiler, {
-  //contentBase: config.output.publicPath,
-  hot: true,
-  historyApiFallback: true,
-  publicPath: config.output.publicPath,
-});
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+app.use(webpackHotMiddleware(compiler))
 
-server.listen(8080,'localhost',function (err, result) {
-  if (err) {
-    console.log(err);
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + '/index.html')
+})
+
+app.listen(3002, function(error) {
+  if (error) {
+    console.error(error)
+  } else {
+    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", 3002, 3002)
   }
-
-  console.log('Listening at localhost:3000');
-});
+})
+// var compiler = webpack(config);
+// var server = new webpackDevServer(compiler, {
+//   hot: true,
+//   historyApiFallback: true,
+//   publicPath: config.output.publicPath,
+// });
+//
+// server.listen(8080,'localhost',function (err, result) {
+//   if (err) {
+//     console.log(err);
+//   }
+//
+//   console.log('Listening at localhost:3000');
+// });
