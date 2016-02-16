@@ -4,7 +4,7 @@ var config = require("./webpack.config.js");
 var webpackHotMiddleware = require('webpack-hot-middleware')
 var express = require('express');
 
-config.devtools = 'eval';
+config.devtools = 'cheap-module-eval-source-map';
 config.entry.unshift('webpack-hot-middleware/client');
 var compiler = webpack(config);
 var app = new express();

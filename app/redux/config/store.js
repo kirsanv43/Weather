@@ -1,20 +1,21 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import rootReducer from '../reducers'
-import { syncHistory, routeReducer } from 'react-router-redux'
 import { browserHistory } from 'react-router'
-import { createHashHistory } from 'history'
+import { createHistory } from 'history'
+import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
+import thunkMiddleware from 'redux-thunk'
 
 export default function configureStore(initialState) {
-  const history = createHashHistory();
-  const middleware = syncHistory(history)
+  //const history = createHashHistory();
+  //const middleware = syncHistory(history)
 
-  const finalCreateStore = compose(
-    applyMiddleware(middleware)
-  )(createStore)
+  const store = compose(
+applyMiddleware(thunkMiddleware),
+    reduxReactRouter({
+      createHistory
+    })/*,
+    devTools()*/)(createStore)(rootReducer);
 
-  const store = finalCreateStore(rootReducer)
-
-  middleware.listenForReplays(store);
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers

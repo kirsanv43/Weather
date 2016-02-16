@@ -1,0 +1,36 @@
+.geosuggest {
+  >.geosuggest__input {
+    width: 100%;
+    font-family: Roboto-Light;
+    padding: 4px;
+    border: 1px solid;
+    border-radius: 3px;
+    &:focus {
+      border-radius: 3px 3px 0 0;
+    }
+  }
+  >.geosuggest__suggests {
+    position: absolute;
+    width: 358px;
+    border: 1px solid #808080;
+    border-top: none;
+    list-style: none;
+    border-radius: 0 0 3px 3px;
+    >.geosuggest-item {
+      background-color: white;
+      padding: 4px;
+      cursor: pointer;
+      &:last-child {
+        border-radius: 0 0 3px 3px;
+      }
+      &:hover {
+
+        background-color: #808080;
+        color: white;
+      }
+    }
+  }
+  >.geosuggest__suggests--hidden {
+    display: none;
+  }
+}

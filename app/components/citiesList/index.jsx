@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import * as actionsCreators from '../../redux/actions/'
 import {bindActionCreators} from 'redux'
 import CitiesListItem from './CitiesListItem'
-import { routeActions } from 'react-router-redux'
-import '../../less/citiesList.less';
+import '../../less/Home/citiesList.less';
 import {Link} from 'react-router'
 
 class CitiesList extends React.Component {
@@ -24,17 +23,17 @@ class CitiesList extends React.Component {
     actions.addCity(this.value)
   };
 
-  onAddCity = () => { 
+  onAddCity = () => {
     this.props.route.push('/addCity')
   };
-/*<li className="listItem addBtn"><Link to='addCity'><span>ADD CITY</span></Link></li>*/
+/*<li className="listItem addBtn"><Link to='addCity'><span>ADD CITY</span></Link></li> <li className="listItem addBtn"><a onClick={this.onAddCity}><span>ADD CITY</span></a></li>*/
   render() {
     let cities = this.props.cities.map((item, i) => {
-      return <CitiesListItem key={i} name={item}/>
+      return <CitiesListItem key={i} item={item}/>
     });
     return <div className="weatherContainer">
       <ul>
-        <li className="listItem addBtn"><a onClick={this.onAddCity}><span>ADD CITY</span></a></li>
+        <li className="listItem addBtn"><Link to='addCity'><span>ADD CITY</span></Link></li>
         {cities}</ul>
       <div>
         <input onChange={this.onChange}/>
@@ -46,8 +45,7 @@ class CitiesList extends React.Component {
 }
 
 CitiesList.propTypes = {
-  cities: React.PropTypes.array.isRequired,
-  actions: React.PropTypes.object.isRequired
+  cities: React.PropTypes.array.isRequired
 }
 
 
@@ -57,9 +55,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actionsCreators, dispatch),
-    route:bindActionCreators(routeActions, dispatch),
-    dispatch:dispatch
   }
 }
 

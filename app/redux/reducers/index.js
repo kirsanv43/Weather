@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux'
 import {ADD_CITY} from '../actions/types'
-import { syncHistory, routeReducer } from 'react-router-redux'
+import {  routerStateReducer} from 'redux-router';
 
 
-function cities(state = ['qqq'], action){
+function cities(state = [], action){
   switch (action.type) {
     case ADD_CITY:
-      return [...state, action.name]
+      return [...state, {name:action.name,temp:action.temp}]
       break;
     default:
       return state;
@@ -16,5 +16,5 @@ function cities(state = ['qqq'], action){
 
 export default combineReducers({
   cities,
-  routing: routeReducer
+  routing: routerStateReducer
 });

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../less/citiesListItem.less';
+import '../../less/Home/citiesListItem.less';
 
 export default class CitiesListItem extends React.Component {
   constructor() {
@@ -14,6 +14,7 @@ export default class CitiesListItem extends React.Component {
       <a className="close"  onClick={this.onClose}>
         <i className="material-icons">close</i>
       </a>
+      <span>{this.props.item.temp}</span>
     </li>)
 
   }
