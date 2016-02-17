@@ -13,7 +13,7 @@ export default class CitiesListItem extends React.Component {
     <li className="listItem">
       <a className="close"  onClick={this.onClose}>
         <i className="material-icons">close</i>
-      </a>
+      </a><span>{this.props.item.name}</span>
       <span>{this.props.item.temp}</span>
     </li>)
 

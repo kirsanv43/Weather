@@ -26,8 +26,8 @@ class CitiesList extends React.Component {
   onAddCity = () => {
     this.props.route.push('/addCity')
   };
-/*<li className="listItem addBtn"><Link to='addCity'><span>ADD CITY</span></Link></li> <li className="listItem addBtn"><a onClick={this.onAddCity}><span>ADD CITY</span></a></li>*/
-  render() {
+
+    render() {
     let cities = this.props.cities.map((item, i) => {
       return <CitiesListItem key={i} item={item}/>
     });
@@ -36,8 +36,6 @@ class CitiesList extends React.Component {
         <li className="listItem addBtn"><Link to='addCity'><span>ADD CITY</span></Link></li>
         {cities}</ul>
       <div>
-        <input onChange={this.onChange}/>
-        <button onClick={this.onAdd}>add</button>
       </div>
     </div>
   }
