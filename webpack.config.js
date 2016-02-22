@@ -9,7 +9,7 @@ module.exports = {
     extensions: ["", ".js", ".jsx"]
   },
   entry: [
-    './app/App.jsx'
+    './client/App.jsx'
   ],
   output: {
     path: output,
@@ -18,6 +18,7 @@ module.exports = {
   },
   watch: true,
   plugins: [
+    //new webpack.optimize.UglifyJsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
@@ -27,7 +28,7 @@ module.exports = {
       test: /\.js.*$/,
       loaders: ['react-hot','babel'],
       exclude: /node_modules/,
-      include: path.join(__dirname, 'app')
+      include: path.join(__dirname, 'client')
     },
     {
           test: /\.less$/,
@@ -38,6 +39,6 @@ module.exports = {
     },{
       test: /\.ttf$/,
       loader: 'url?limit=100000'
-    }]
+    } ]
   }
 };

@@ -3,7 +3,7 @@ import rootReducer from '../reducers'
 import { browserHistory } from 'react-router'
 import { createHistory } from 'history'
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
-import thunkMiddleware from 'redux-thunk'
+import thunkMiddleware from 'redux-thunk' 
 
 export default function configureStore(initialState) {
   //const history = createHashHistory();
@@ -13,8 +13,7 @@ export default function configureStore(initialState) {
 applyMiddleware(thunkMiddleware),
     reduxReactRouter({
       createHistory
-    })/*,
-    devTools()*/)(createStore)(rootReducer);
+    }) )(createStore)(rootReducer);
 
 
   if (module.hot) {

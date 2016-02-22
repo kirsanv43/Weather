@@ -28,8 +28,9 @@ class CitiesList extends React.Component {
   };
 
     render() {
+      let self = this;
     let cities = this.props.cities.map((item, i) => {
-      return <CitiesListItem key={i} item={item}/>
+      return <CitiesListItem key={i} loadWeather={self.props.actions.loadWeather} item={item}/>
     });
     return <div className="weatherContainer">
       <ul>
@@ -53,6 +54,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    actions: bindActionCreators(actionsCreators, dispatch)
   }
 }
 

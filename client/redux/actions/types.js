@@ -1,0 +1,3 @@
+export const ADD_CITY = 'ADD_CITY'
+export const LOADED_TEMPERATURE = 'LOADED_TEMPERATURE'
+export const LOAD_ERROR = 'LOAD_ERROR'
