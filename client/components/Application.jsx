@@ -1,5 +1,5 @@
 import React from 'react'
-import '../less/weather.less';
+import 'less/weather.less';
 
 export default class Application extends React.Component {
   constructor() {

@@ -3,9 +3,14 @@ var webpack = require('webpack');
 var output = path.join(__dirname, './build');
 
 module.exports = {
+  devtool:'eval',
   context: path.resolve(__dirname, './'),
   resolve: {
-    modulesDirectories: ["node_modules","less"],
+    alias: {
+      api: path.resolve(__dirname, 'client', 'api'),
+      less: path.resolve(__dirname, 'client', 'less')
+    },
+    modulesDirectories: ["node_modules"],
     extensions: ["", ".js", ".jsx"]
   },
   entry: [
@@ -26,19 +31,18 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js.*$/,
-      loaders: ['react-hot','babel'],
+      loaders: ['react-hot', 'babel'],
       exclude: /node_modules/,
       include: path.join(__dirname, 'client')
-    },
-    {
-          test: /\.less$/,
-          loader: "style!css!less"
-        },{
+    }, {
+      test: /\.less$/,
+      loader: "style!css!less"
+    }, {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=25000'
-    },{
+    }, {
       test: /\.ttf$/,
       loader: 'url?limit=100000'
-    } ]
+    }]
   }
 };

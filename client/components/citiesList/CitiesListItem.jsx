@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../less/Home/citiesListItem.less';
-import * as weatherStates from '../../redux/constants/weather'
+import 'less/Home/citiesListItem.less';
+import * as Status from '../../redux/statuses/weatherLoad'
 
 export default class CitiesListItem extends React.Component {
   constructor() {
@@ -8,20 +8,26 @@ export default class CitiesListItem extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.item.state === weatherStates.UNDEFINED) {
+    if (this.props.item.status === Status.UNDEFINED) {
       this.props.loadWeather(this.props.item.id, this.props.item.lat, this.props.item.lng);
     }
   }
 
-  onClose = () => {};
+  onClose = () => {
+    this.props.removeCity(this.props.item.id);
+  };
 
   getWeatherContent() {
     if (this.props.item.error) {
-      return <div className='error'>{this.props.item.error}</div>;
+      return (
+        <div className='error'>{this.props.item.error}</div>
+      );
     } else {
-      return <div className={this.props.item.temp >= 0
-        ? 'plus'
-        : 'minus'}>{this.props.item.temp}</div>;
+      return (
+        <div className={this.props.item.temp >= 0
+          ? 'plus'
+          : 'minus'}>{this.props.item.temp}</div>
+      );
     }
   }
 

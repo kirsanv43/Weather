@@ -1,19 +1,22 @@
+@import "button";
+@import "../variables";
+
+
 .geosuggest {
+  padding: 0;
   >.geosuggest__input {
-    width: 100%;
+    width: @containerWidth - @geosuggest_border_size*2 - @geosuggest_padding*2;
     font-family: Roboto-Light;
-    padding: 4px;
-    border: 1px solid;
-    border-radius: 3px;
+    min-height: round( @item_min_height - 1);
+    padding: @geosuggest_padding;
+    border: none;
     &:focus {
-      border-radius: 3px 3px 0 0;
+outline: none;
     }
   }
   >.geosuggest__suggests {
     position: absolute;
-    width: 358px;
-    border: 1px solid #808080;
-    border-top: none;
+    width: @containerWidth - @item_border_width*2; 
     list-style: none;
     border-radius: 0 0 3px 3px;
     >.geosuggest-item {
@@ -24,7 +27,6 @@
         border-radius: 0 0 3px 3px;
       }
       &:hover {
-
         background-color: #808080;
         color: white;
       }

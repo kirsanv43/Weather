@@ -12,6 +12,7 @@ config.devtools = 'cheap-module-eval-source-map';
 config.entry.unshift('webpack-hot-middleware/client');
 var compiler = webpack(config);
 var app = new express();
+var port = 3000;
 
 app.use(webpackDevMiddleware(compiler, {
   noInfo: true,
@@ -36,24 +37,10 @@ app.get("/getWeather/:lat/:lng", function(req, res) {
   }
 })
 
-app.listen(3002, function(error) {
+app.listen(port, function(error) {
     if (error) {
       console.error(error)
     } else {
-      console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", 3002, 3002)
+      console.info(`Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`)
     }
   })
-  // var compiler = webpack(config);
-  // var server = new webpackDevServer(compiler, {
-  //   hot: true,
-  //   historyApiFallback: true,
-  //   publicPath: config.output.publicPath,
-  // });
-  //
-  // server.listen(8080,'localhost',function (err, result) {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //
-  //   console.log('Listening at localhost:3000');
-  // });

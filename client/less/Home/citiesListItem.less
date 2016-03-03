@@ -1,13 +1,13 @@
-@radius: 3px;
-@bd-color: #1d1719;
+@import "../variables.less";
+
 .listItem {
   border: 1px solid @bd-color;
-  min-height: 30px;
+  min-height: @item_min_height;
   padding: 5px;
   border-top: none;
   &:first-child {
     border-radius: @radius @radius 0 0;
-    border: 1px solid @bd-color;
+    border: @item_border_width solid @bd-color;
   }
   &:last-child {
     border-radius: 0 0 @radius @radius;

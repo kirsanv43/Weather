@@ -1,9 +1,8 @@
-import * as Status from '../constants/weather'
+import * as Status from '../statuses/weatherLoad'
 import {
   getWeatherByCoordinate
-} from '../api/weather'
+} from 'api/weather'
 import {
-  ADD_CITY,
   LOADED_TEMPERATURE,
   LOAD_ERROR
 } from './types'
