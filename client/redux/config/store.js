@@ -3,11 +3,9 @@ import rootReducer from '../reducers'
 import { browserHistory } from 'react-router'
 import { createHistory } from 'history'
 import { reduxReactRouter, routerStateReducer, ReduxRouter } from 'redux-router';
-import thunkMiddleware from 'redux-thunk' 
+import thunkMiddleware from 'redux-thunk'
 
-export default function configureStore(initialState) {
-  //const history = createHashHistory();
-  //const middleware = syncHistory(history)
+export default function configureStore(initialState) { 
 
   const store = compose(
 applyMiddleware(thunkMiddleware),
