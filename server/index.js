@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var webpackDevMiddleware = require('webpack-dev-middleware')
+var WebpackDevmiddleware = require('webpack-dev-middleware')
 var config = require("../webpack.config.js");
 var webpackHotMiddleware = require('webpack-hot-middleware')
 var express = require('express');
@@ -10,11 +10,27 @@ import path from 'path'
 
 config.devtools = 'cheap-module-eval-source-map';
 config.entry.unshift('webpack-hot-middleware/client');
+//config.entry.unshift("webpack-hot-middleware?http://localhost:8080/", "webpack-hot-middleware/client");
 var compiler = webpack(config);
 var app = new express();
 var port = 3000;
 
-app.use(webpackDevMiddleware(compiler, {
+//
+// var dev = new WebpackDevServer(webpack(config), {
+//   publicPath: config.output.publicPath,
+//   hot: true,
+//   historyApiFallback: true
+// }).listen(port+1, 'localhost', function (err, result) {
+//   if (err) {
+//     return console.log(err);
+//   }
+//
+//   console.log(`Listening at http://localhost:${port+1}/`);
+// });
+
+app.use(express.static(path.resolve('./static')));
+app.use(WebpackDevmiddleware(compiler, {
+  hot:true,
   noInfo: true,
   publicPath: config.output.publicPath
 }))
@@ -36,6 +52,8 @@ app.get("/getWeather/:lat/:lng", function(req, res) {
     }));
   }
 })
+
+
 
 app.listen(port, function(error) {
     if (error) {

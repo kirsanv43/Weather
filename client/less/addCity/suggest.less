@@ -1,8 +1,7 @@
 @import "button";
 @import "../variables";
-
-
 .geosuggest {
+  color: black;
   padding: 0;
   >.geosuggest__input {
     width: @containerWidth - @geosuggest_border_size*2 - @geosuggest_padding*2;
@@ -11,12 +10,13 @@
     padding: @geosuggest_padding;
     border: none;
     &:focus {
-outline: none;
+      outline: none;
     }
   }
   >.geosuggest__suggests {
+
     position: absolute;
-    width: @containerWidth - @item_border_width*2; 
+    width: @containerWidth - @item_border_width*2;
     list-style: none;
     border-radius: 0 0 3px 3px;
     >.geosuggest-item {

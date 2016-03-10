@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var output = path.join(__dirname, './build');
 
 module.exports = {
-  devtool:'eval',
+  devtool: 'eval',
   context: path.resolve(__dirname, './'),
   resolve: {
     alias: {
@@ -36,7 +36,7 @@ module.exports = {
       include: path.join(__dirname, 'client')
     }, {
       test: /\.less$/,
-      loader: "style!css!less"
+      loaders: ["style", "css", "less"]
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=25000'

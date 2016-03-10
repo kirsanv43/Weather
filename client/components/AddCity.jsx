@@ -20,7 +20,7 @@ class AddCity extends React.Component {
     const {lat, lng, name} = this.props.select;
     if (this.props.select && this.props.select.lat)
       return (
-        <div className='addBtn listItem'>
+        <div className='btn listItem'>
           <Link onClick={(e) => self.props.actions.addCityByLocation(lat, lng, name)} to='/'>
             <span>ADD</span>
           </Link>
@@ -28,10 +28,10 @@ class AddCity extends React.Component {
       )
   }
 
-  render() { 
+  render() {
     return (
       <section >
-        <div className='addBtn listItem'>
+        <div className='btn listItem'>
           <Link to='/'>
             <span>BACK</span>
           </Link>

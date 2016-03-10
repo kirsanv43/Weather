@@ -35,7 +35,7 @@ class CitiesList extends React.Component {
     return (
       <div className="weatherContainer">
         <ul>
-          <li className="listItem addBtn">
+          <li className="listItem btn">
             <Link to='addCity'>
               <span>ADD CITY</span>
             </Link>
