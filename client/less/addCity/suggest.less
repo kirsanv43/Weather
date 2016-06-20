@@ -1,38 +1,40 @@
 @import "button";
 @import "../variables";
 .geosuggest {
-  color: black;
-  padding: 0;
-  >.geosuggest__input {
-    width: @containerWidth - @geosuggest_border_size*2 - @geosuggest_padding*2;
-    font-family: Roboto-Light;
-    min-height: round( @item_min_height - 1);
-    padding: @geosuggest_padding;
-    border: none;
-    &:focus {
-      outline: none;
+    color: black;
+    padding: 0;
+    .geosuggest__input-wrapper {
+        input {
+            width: @containerWidth - @geosuggest_border_size*2 - @geosuggest_padding*2;
+            font-family: Roboto-Light;
+            padding: @geosuggest_padding;
+            min-height: round( @item_min_height - 1);
+            border: none;
+            &:focus {
+                outline: none;
+            }
+        }
     }
-  }
-  >.geosuggest__suggests {
-
-    position: absolute;
-    width: @containerWidth - @item_border_width*2;
-    list-style: none;
-    border-radius: 0 0 3px 3px;
-    >.geosuggest-item {
-      background-color: white;
-      padding: 4px;
-      cursor: pointer;
-      &:last-child {
+    .geosuggest__suggests-wrapper {
+        position: absolute;
+        width: @containerWidth - @item_border_width*2;
+        list-style: none;
         border-radius: 0 0 3px 3px;
-      }
-      &:hover {
-        background-color: #808080;
-        color: white;
-      }
+        .geosuggest-item {
+            list-style: none;
+            background-color: white;
+            padding: 4px;
+            cursor: pointer;
+            &:last-child {
+                border-radius: 0 0 3px 3px;
+            }
+            &:hover {
+                background-color: #808080;
+                color: white;
+            }
+        }
     }
-  }
-  >.geosuggest__suggests--hidden {
-    display: none;
-  }
+    .geosuggest__suggests--hidden {
+        display: none;
+    }
 }

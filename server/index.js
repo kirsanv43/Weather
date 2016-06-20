@@ -36,10 +36,6 @@ app.use(WebpackDevmiddleware(compiler, {
 }))
 app.use(webpackHotMiddleware(compiler))
 
-app.get("/", function(req, res) {
-  res.sendFile(path.resolve(__dirname,'../index.html'))
-})
-
 app.get("/getWeather/:lat/:lng", function(req, res) {
   if (req.params.lat && req.params.lng) {
     var response = weather(req.params.lat, req.params.lng).then(resp => resp.json()).then(resp => {
@@ -52,6 +48,12 @@ app.get("/getWeather/:lat/:lng", function(req, res) {
     }));
   }
 })
+
+
+app.get("*", function(req, res) {
+  res.sendFile(path.resolve(__dirname,'../index.html'))
+});
+
 
 
 

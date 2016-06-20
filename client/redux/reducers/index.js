@@ -1,14 +1,10 @@
-import cities from './cities.js'
-import select from './select.js'
-import {
-  combineReducers
-} from 'redux'
-import {
-  routerStateReducer
-} from 'redux-router';
+import cities from './cities.js';
+import select from './select.js';
+import { routerReducer } from 'react-router-redux';
+import { combineReducers } from 'redux';
 
 export default combineReducers({
   cities,
   select,
-  routing: routerStateReducer
+  routing: routerReducer
 });
