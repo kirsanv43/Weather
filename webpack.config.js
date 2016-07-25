@@ -8,9 +8,9 @@ module.exports = {
   resolve: {
     alias: {
       api: path.resolve(__dirname, 'client', 'api'),
-      less: path.resolve(__dirname, 'client', 'less')
+      style: path.resolve(__dirname, 'client', 'style')
     },
-    modulesDirectories: ["node_modules"],
+    modulesDirectories: ["node_modules", "client"],
     extensions: ["", ".js", ".jsx"]
   },
   entry: [
@@ -35,8 +35,8 @@ module.exports = {
       exclude: /node_modules/,
       include: path.join(__dirname, 'client')
     }, {
-      test: /\.less$/,
-      loaders: ["style", "css", "less"]
+      test: /\.scss$/,
+      loaders: ["style", "css", "sass"]
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=25000'

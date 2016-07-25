@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import * as actionsCreators from '../../redux/actions/'
 import {bindActionCreators} from 'redux'
 import CitiesListItem from './CitiesListItem'
-import 'less/Home/citiesList.less';
+//import 'less/Home/citiesList.scss';
 import {Link} from 'react-router'
 
 class CitiesList extends React.Component {
@@ -33,9 +33,9 @@ class CitiesList extends React.Component {
       return <CitiesListItem key={i} removeCity={self.props.actions.removeCity} loadWeather={self.props.actions.loadWeather} item={item}/>
     });
     return (
-      <div className="weatherContainer">
+      <div className="list-container">
         <ul>
-          <li className="listItem btn">
+          <li className="list-container__item list-container__item--button">
             <Link to='addCity'>
               <span>ADD CITY</span>
             </Link>

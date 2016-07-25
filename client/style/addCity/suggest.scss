@@ -1,23 +1,22 @@
-@import "button";
-@import "../variables";
+
 .geosuggest {
     color: black;
     padding: 0;
-    .geosuggest__input-wrapper {
+    &__input-wrapper {
         input {
-            width: @containerWidth - @geosuggest_border_size*2 - @geosuggest_padding*2;
+            width: $containerWidth - $geosuggest_border_size*2 - $geosuggest_padding*2;
             font-family: Roboto-Light;
-            padding: @geosuggest_padding;
-            min-height: round( @item_min_height - 1);
+            padding: $geosuggest_padding;
+            min-height: round( $item_min_height - 1);
             border: none;
             &:focus {
                 outline: none;
             }
         }
     }
-    .geosuggest__suggests-wrapper {
+    &__suggests-wrapper {
         position: absolute;
-        width: @containerWidth - @item_border_width*2;
+        width: $containerWidth - $item_border_width*2;
         list-style: none;
         border-radius: 0 0 3px 3px;
         .geosuggest-item {
@@ -34,7 +33,7 @@
             }
         }
     }
-    .geosuggest__suggests--hidden {
+    &__suggests--hidden {
         display: none;
     }
 }

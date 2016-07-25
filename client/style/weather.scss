@@ -3,7 +3,8 @@
 @import "variables";
 @import "container";
 @import "button";
-
+@import "./addCity/suggest";
+@import "./Home/citiesList";
 
 * {
   margin: 0;
@@ -14,7 +15,7 @@ body {
   font-family: Roboto-Light;
 }
 .container {
-  width: @containerWidth;
+  width: $containerWidth;
   margin: 0 auto;
   position: relative;
   padding: 10px 10px 12px 10px;

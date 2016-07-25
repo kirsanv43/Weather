@@ -1,5 +1,5 @@
 import React from 'react'
-import 'less/Home/citiesListItem.less';
+//import 'less/Home/citiesListItem.scss';
 import * as Status from '../../redux/statuses/weatherLoad'
 
 export default class CitiesListItem extends React.Component {
@@ -33,7 +33,7 @@ export default class CitiesListItem extends React.Component {
 
   render() {
     return (
-      <li className="listItem">
+      <li className="list-container__item">
         <a className="close" onClick={this.onClose}>
           <i className="material-icons">close</i>
         </a>
