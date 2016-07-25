@@ -1,5 +1,6 @@
 .list-container {
     &__item {
+        height: 39px;
         border: 1px solid $bd-color;
         min-height: $item_min_height;
         padding: 5px;
