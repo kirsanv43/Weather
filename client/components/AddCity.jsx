@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 //import 'less/addCity/suggest.scss';
-import Geosuggest from 'react-geosuggest'
-import {connect} from 'react-redux'
-import * as actionsCreators from '../redux/actions/'
-import {bindActionCreators} from 'redux'
-import {Link} from 'react-router'
+import Geosuggest from 'react-geosuggest';
+import {connect} from 'react-redux';
+import * as actionsCreators from '../redux/actions/';
+import {bindActionCreators} from 'redux';
+import {Link} from 'react-router';
 
 class AddCity extends React.Component {
   constructor() {
@@ -25,7 +25,7 @@ class AddCity extends React.Component {
             <span>ADD</span>
           </Link>
         </div>
-      )
+      );
   }
 
   onBack = () => {
@@ -46,14 +46,14 @@ class AddCity extends React.Component {
           onSuggestSelect={this.onSuggestSelect}/>
         {this.getAddBtn()}
       </section>
-    )
+    );
   }
 }
 
 export default connect((state) => {
-  return {select: state.select}
+  return {select: state.select};
 }, (dispatch) => {
   return {
     actions: bindActionCreators(actionsCreators, dispatch)
-  }
-})(AddCity)
+  };
+})(AddCity);

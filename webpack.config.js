@@ -3,7 +3,7 @@ var webpack = require('webpack');
 var output = path.join(__dirname, './build');
 
 module.exports = {
-  devtool: 'eval',
+  devtool: "source-map",
   context: path.resolve(__dirname, './'),
   resolve: {
     alias: {
@@ -36,7 +36,7 @@ module.exports = {
       include: path.join(__dirname, 'client')
     }, {
       test: /\.scss$/,
-      loaders: ["style", "css", "sass"]
+      loaders: ["style", "css?sourceMap", "sass?sourceMap"]
     }, {
       test: /\.(png|jpg)$/,
       loader: 'url?limit=25000'

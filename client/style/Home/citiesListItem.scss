@@ -1,4 +1,8 @@
 .list-container {
+    margin: 0 auto;
+    > ul {
+        list-style: none;
+    }
     &__item {
         height: 39px;
         border: 1px solid $bd-color;

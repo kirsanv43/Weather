@@ -1,10 +1,9 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import * as actionsCreators from '../../redux/actions/'
-import {bindActionCreators} from 'redux'
-import CitiesListItem from './CitiesListItem'
-//import 'less/Home/citiesList.scss';
-import {Link} from 'react-router'
+import React from 'react';
+import {connect} from 'react-redux';
+import * as actionsCreators from '../../redux/actions/';
+import {bindActionCreators} from 'redux';
+import CitiesListItem from './CitiesListItem';
+import {Link} from 'react-router';
 
 class CitiesList extends React.Component {
   constructor() {
@@ -20,17 +19,22 @@ class CitiesList extends React.Component {
         actions
       }} = this;
 
-    actions.addCity(this.value)
+    actions.addCity(this.value);
   };
 
   onAddCity = () => {
-    this.props.route.push('/addCity')
+    this.props.route.push('/addCity');
   };
 
   render() {
     let self = this;
     let cities = this.props.cities.map((item, i) => {
-      return <CitiesListItem key={i} removeCity={self.props.actions.removeCity} loadWeather={self.props.actions.loadWeather} item={item}/>
+      return (
+        <CitiesListItem
+          key={i}
+          removeCity={self.props.actions.removeCity}
+          loadWeather={self.props.actions.loadWeather}
+          item={item}/>);
     });
     return (
       <div className="list-container">
@@ -50,16 +54,16 @@ class CitiesList extends React.Component {
 
 CitiesList.propTypes = {
   cities: React.PropTypes.array.isRequired
-}
+};
 
 function mapStateToProps(state) {
-  return {cities: state.cities}
+  return {cities: state.cities};
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators(actionsCreators, dispatch)
-  }
+  };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CitiesList)
+export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);

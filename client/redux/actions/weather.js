@@ -24,18 +24,18 @@ export function loadedWeather(id, temp, status) {
     status: status || Status.LOADED
   }
 }
-
-export function loadWeather(cityId, lat, lng) {
-  return dispatch => {
-    let params = {
-      cityId,
-      lat,
-      lng
-    };
-    getWeatherByCoordinate(lat, lng)
-      .then(response => responseFromServer(response, dispatch, params),errorHandler)
-      .then(response => responseFromWeatherServis(response, dispatch, params),errorHandler)
+export const loadWeather = (cityId, lat, lng) => async (dispatch) => {
+  let params = {
+    cityId,
+    lat,
+    lng
+  };
+  const response = await getWeatherByCoordinate(lat, lng);
+  const body = await responseFromServer(response, dispatch, params);
+  if ( typeof body.status !== 'undefined' && body.status !== 200) {
+    return dispatch(loadError(params.cityId, `Error ${body.status}:${body.statusText}`));
   }
+  responseFromWeatherServis(body, dispatch, params);
 }
 
 function errorHandler(error){
@@ -56,12 +56,12 @@ function responseFromServer(resp, dispatch, params) {
 /**
  * Обработчик запроса погоды на сервере
  */
-function responseFromWeatherServis(resp, dispatch, params) {
-  if (resp) {
-    if (resp.currently) {
-      dispatch(loadedWeather(params.cityId, resp.currently.temperature));
+function responseFromWeatherServis(body, dispatch, params) {
+  if (body) {
+    if (body.currently) {
+      dispatch(loadedWeather(params.cityId, body.currently.temperature));
     } else {
-      dispatch(loadError(params.cityId, resp.message || resp.error));
+      dispatch(loadError(params.cityId, body.message || body.error));
     }
   }
 }

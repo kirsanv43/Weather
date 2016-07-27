@@ -1,6 +1,5 @@
-import React from 'react'
-//import 'less/Home/citiesListItem.scss';
-import * as Status from '../../redux/statuses/weatherLoad'
+import React from 'react';
+import * as Status from '../../redux/statuses/weatherLoad';
 
 export default class CitiesListItem extends React.Component {
   constructor() {
@@ -40,7 +39,6 @@ export default class CitiesListItem extends React.Component {
         <span>{this.props.item.name}</span>
         {this.getWeatherContent()}
       </li>
-    )
-
+    );
   }
 }

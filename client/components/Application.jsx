@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import 'style/weather.scss';
 import MobileDetect from 'mobile-detect';
 
@@ -17,13 +17,11 @@ export default class Application extends React.Component {
             <source src="weather.mp4"></source>
           </video>
         </div>
-      )
+      );
     }
   }
 
   render() {
-
-    console.log(md.mobile());
     return (
       <div>
         {this.getVideo()}
@@ -34,6 +32,6 @@ export default class Application extends React.Component {
           {this.props.children}
         </div>
       </div>
-    )
+    );
   }
 }

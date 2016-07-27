@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import * as actionsCreators from '../redux/actions/'
 import {bindActionCreators} from 'redux'
-import CitiesList from './citiesList' 
+import CitiesList from './citiesList'
 
 export default class Home extends React.Component {
   constructor() {
@@ -13,8 +13,9 @@ export default class Home extends React.Component {
 
   }
   render() {
-    return <section>
-      <CitiesList />
-    </section>
+    return (
+      <section>
+        <CitiesList />
+      </section>);
   }
 }

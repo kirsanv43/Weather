@@ -8,5 +8,5 @@ function url(lat, lng){
 }
 
 module.exports = function getWeatherByCoordinate(lat, lng){
-  return fetch(url(lat, lng));
+  return fetch(url(lat, lng), {method: 'GET',timeout: 5000});
 }

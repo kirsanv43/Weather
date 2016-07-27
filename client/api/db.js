@@ -1,4 +1,4 @@
-import * as weatherStates from '../redux/statuses/weatherLoad'
+import * as weatherStates from '../redux/statuses/weatherLoad';
 
 if (!window.localStorage.cities) {
   window.localStorage.cities = JSON.stringify({cities:[]});

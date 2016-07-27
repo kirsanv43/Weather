@@ -1,10 +1,10 @@
 var webpack = require('webpack');
-var WebpackDevmiddleware = require('webpack-dev-middleware')
+var WebpackDevmiddleware = require('webpack-dev-middleware');
 var config = require("../webpack.config.js");
-var webpackHotMiddleware = require('webpack-hot-middleware')
+var webpackHotMiddleware = require('webpack-hot-middleware');
 var express = require('express');
-import weather from './services/weather.js'
-import path from 'path'
+import weather from './services/weather.js';
+import path from 'path';
 
 
 
@@ -15,43 +15,35 @@ var compiler = webpack(config);
 var app = new express();
 var port = 3000;
 
-//
-// var dev = new WebpackDevServer(webpack(config), {
-//   publicPath: config.output.publicPath,
-//   hot: true,
-//   historyApiFallback: true
-// }).listen(port+1, 'localhost', function (err, result) {
-//   if (err) {
-//     return console.log(err);
-//   }
-//
-//   console.log(`Listening at http://localhost:${port+1}/`);
-// });
-
 app.use(express.static(path.resolve('./static')));
 app.use(WebpackDevmiddleware(compiler, {
   hot:true,
   noInfo: true,
   publicPath: config.output.publicPath
-}))
-app.use(webpackHotMiddleware(compiler))
+}));
+app.use(webpackHotMiddleware(compiler));
 
-app.get("/getWeather/:lat/:lng", function(req, res) {
+app.get("/getWeather/:lat/:lng", async function(req, res) {
   if (req.params.lat && req.params.lng) {
-    var response = weather(req.params.lat, req.params.lng).then(resp => resp.json()).then(resp => {
-      res.send(resp);
-    });
+    const response = await weather(req.params.lat, req.params.lng);
+
+    if (response.status !== 200) {
+      res.send(response);
+    } else {
+      const body = await response.json();
+      res.send(body);
+    }
   } else {
     return res.send(JSON.stringify({
       code: 500,
       message: 'lat or lng is undefined'
     }));
   }
-})
+});
 
 
 app.get("*", function(req, res) {
-  res.sendFile(path.resolve(__dirname,'../index.html'))
+  res.sendFile(path.resolve(__dirname,'../index.html'));
 });
 
 
@@ -59,8 +51,8 @@ app.get("*", function(req, res) {
 
 app.listen(port, function(error) {
     if (error) {
-      console.error(error)
+      console.error(error);
     } else {
-      console.info(`Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`)
+      console.info(`Listening on port ${port}. Open up http://localhost:${port}/ in your browser.`);
     }
-  })
+  });
